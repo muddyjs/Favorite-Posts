@@ -1,6 +1,6 @@
 # Favorite Posts Performance Plugin
 
-A lightweight WordPress plugin that adds a high-performance **Save/Saved** bookmark button for posts.
+A lightweight WordPress plugin that adds a high-performance **Save/Saved** bookmark button for posts, now compatible with Tailwind-style utility classes.
 
 ## Features
 
@@ -8,7 +8,7 @@ A lightweight WordPress plugin that adds a high-performance **Save/Saved** bookm
 - Toggle bookmarks (add/remove) for authenticated users
 - Redis-friendly object cache layer for user favorites
 - Optimistic UI frontend with debounced click handling
-- Dark/light mode compatible styles
+- Tailwind utility-class based button styles (keeps your existing Save button look)
 - i18n-ready strings with `favorite-posts-plugin` text domain
 - PHPUnit coverage for endpoint auth, nonce, and toggle flow
 
@@ -20,7 +20,12 @@ A lightweight WordPress plugin that adds a high-performance **Save/Saved** bookm
 4. Add buttons where needed, for example:
 
 ```html
-<button class="fp-favorite-btn" data-post-id="123" aria-pressed="false">
+<button
+  data-id="123"
+  data-post-id="123"
+  class="fp-favorite-btn save-btn bg-[#007AFF] relative z-40 text-white px-5 py-2 rounded-lg font-bold text-sm shadow-sm hover:opacity-90 active:scale-95 transition-all"
+  aria-pressed="false"
+>
   <span class="fp-label">Save</span>
 </button>
 ```
@@ -65,3 +70,9 @@ No. Guests receive a `401` response for favorite requests.
 
 ### Is Redis required?
 No, but strongly recommended. The plugin uses WordPress object cache APIs so Redis object cache plugins work out of the box.
+
+
+## Tailwind Integration Notes
+
+- The button markup uses utility classes (such as `bg-[#007AFF]`, `bg-black`, spacing, typography, and state classes) so existing Tailwind-based themes can keep their prior visual style.
+- The plugin toggles `bg-[#007AFF]` ↔ `bg-black` and `is-saved`/`is-favorited` classes at runtime.

@@ -11,6 +11,9 @@
 
 	function setButtonState(button, isSaved) {
 		button.classList.toggle('is-favorited', isSaved);
+		button.classList.toggle('is-saved', isSaved);
+		button.classList.toggle('bg-black', isSaved);
+		button.classList.toggle('bg-[#007AFF]', !isSaved);
 		button.setAttribute('aria-pressed', String(isSaved));
 		var label = button.querySelector('.fp-label');
 		if (label) {
@@ -20,6 +23,8 @@
 
 	function setLoading(button, loading) {
 		button.classList.toggle('is-loading', loading);
+		button.classList.toggle('opacity-75', loading);
+		button.classList.toggle('pointer-events-none', loading);
 		button.disabled = loading;
 	}
 

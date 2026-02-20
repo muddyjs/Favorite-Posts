@@ -81,13 +81,15 @@ class Favorite_Posts_Utils {
 	public static function render_button( $post_id ) {
 		$post_id    = absint( $post_id );
 		$is_saved   = self::is_favorited_for_current_user( $post_id );
-		$state      = $is_saved ? ' is-favorited' : '';
 		$aria_state = $is_saved ? 'true' : 'false';
 		$label      = $is_saved ? __( 'Saved', 'favorite-posts-plugin' ) : __( 'Save', 'favorite-posts-plugin' );
+		$bg_class   = $is_saved ? 'bg-black is-saved is-favorited' : 'bg-[#007AFF]';
+		$classes    = 'fp-favorite-btn save-btn relative z-40 text-white px-5 py-2 rounded-lg font-bold text-sm shadow-sm hover:opacity-90 active:scale-95 transition-all';
 
 		return sprintf(
-			'<button class="fp-favorite-btn%1$s" data-post-id="%2$d" aria-pressed="%3$s"><span class="fp-label">%4$s</span></button>',
-			esc_attr( $state ),
+			'<button class="%1$s %2$s" data-id="%3$d" data-post-id="%3$d" aria-pressed="%4$s"><span class="fp-label">%5$s</span></button>',
+			esc_attr( $classes ),
+			esc_attr( $bg_class ),
 			absint( $post_id ),
 			esc_attr( $aria_state ),
 			esc_html( $label )
