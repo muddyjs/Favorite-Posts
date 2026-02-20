@@ -1,0 +1,21 @@
+/*
+ * Tailwind-first button styling.
+ * This file only provides tiny behavior helpers that Tailwind does not include by default.
+ */
+
+.fp-favorite-btn.has-error {
+	animation: fp-shake 0.3s linear 1;
+}
+
+@keyframes fp-shake {
+	0%,
+	100% {
+		transform: translateX(0);
+	}
+	25% {
+		transform: translateX(-2px);
+	}
+	75% {
+		transform: translateX(2px);
+	}
+}
