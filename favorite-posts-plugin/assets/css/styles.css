@@ -1,0 +1,66 @@
+.fp-favorite-btn {
+	--fp-bg: #f3f4f6;
+	--fp-color: #111827;
+	--fp-border: #d1d5db;
+	align-items: center;
+	background-color: var(--fp-bg);
+	border: 1px solid var(--fp-border);
+	border-radius: 999px;
+	color: var(--fp-color);
+	cursor: pointer;
+	display: inline-flex;
+	font-size: 14px;
+	font-weight: 600;
+	gap: 0.4rem;
+	line-height: 1;
+	padding: 0.55rem 0.9rem;
+	transition: all 0.2s ease;
+}
+
+.fp-favorite-btn:hover,
+.fp-favorite-btn:focus-visible {
+	border-color: #9ca3af;
+	outline: none;
+}
+
+.fp-favorite-btn.is-favorited {
+	--fp-bg: #fde68a;
+	--fp-border: #f59e0b;
+	--fp-color: #78350f;
+}
+
+.fp-favorite-btn.is-loading {
+	opacity: 0.75;
+	pointer-events: none;
+}
+
+.fp-favorite-btn.has-error {
+	animation: fp-shake 0.3s linear 1;
+}
+
+@keyframes fp-shake {
+	0%,
+	100% {
+		transform: translateX(0);
+	}
+	25% {
+		transform: translateX(-2px);
+	}
+	75% {
+		transform: translateX(2px);
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	.fp-favorite-btn {
+		--fp-bg: #1f2937;
+		--fp-color: #f9fafb;
+		--fp-border: #374151;
+	}
+
+	.fp-favorite-btn.is-favorited {
+		--fp-bg: #78350f;
+		--fp-color: #fef3c7;
+		--fp-border: #d97706;
+	}
+}
